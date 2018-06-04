@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+var axios = require('axios');
 
 class App extends Component {
 
@@ -12,9 +13,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('/getInfo')
-    .then(res => res.json())
+    axios.get('/getInfo')
+    .then(res => res.data)
     .then(infoUser => this.setState({infoUser}, () => console.log('Info fetched', infoUser)));
+    //  fetch('/getInfo')
+    // .then(res => res.json())
+    // .then(infoUser => this.setState({infoUser}, () => console.log('Info fetched', infoUser)));
   }
 
   render() {
